@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ArecaGlobal - Premium Indian Areca Nut & Spice Exporter. Direct from Karnataka & Kerala farms. Competitive bulk pricing. Global delivery to 40+ countries.">
+  <title>ArecaGlobal — Premium Indian Areca Nut & Spice Exporter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <style>
+    /* ======= RESET & ROOT ======= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C97A;
+      --gold-dark: #8B6914;
+      --forest: #1A3D2B;
+      --forest-mid: #2A5C40;
+      --forest-light: #3D7A57;
+      --cream: #F7F3EC;
+      --dark: #0D1F17;
+      --text-on-dark: #E8E0D0;
+      --text-muted: #9B8E7E;
+      --green-accent: #1D9E75;
+      --green-light: #5DCAA5;
+      --red-alert: #E24B4A;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0D1F17;
+      color: #E8E0D0;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ======= SCROLLBAR ======= */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0D1F17; }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+
+    /* ======= ANIMATIONS ======= */
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+    @keyframes scrollDot { 0%{opacity:0;transform:translateY(-6px)} 50%{opacity:1} 100%{opacity:0;transform:translateY(6px)} }
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+
+    .fade-in { animation: fadeInUp 0.7s ease both; }
+    .fade-in-delay-1 { animation-delay: 0.1s; }
+    .fade-in-delay-2 { animation-delay: 0.2s; }
+    .fade-in-delay-3 { animation-delay: 0.3s; }
+
+    /* ======= NAVIGATION ======= */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 48px;
+      border-bottom: 0.5px solid rgba(201,168,76,0.25);
+      background: rgba(13,31,23,0.97);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--text-on-dark); font-weight: 400; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--dark);
+      padding: 9px 22px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      letter-spacing: 0.5px;
+      font-family: 'DM Sans', sans-serif;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .nav-wa {
+      background: transparent;
+      border: 0.5px solid #25D366;
+      color: #25D366;
+      padding: 9px 16px;
+      border-radius: 4px;
+      font-size: 13px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: background 0.2s;
+    }
+    .nav-wa:hover { background: rgba(37,211,102,0.1); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--gold); border-radius: 2px; }
+
+    /* ======= HERO ======= */
+    .hero {
+      position: relative;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 32px 100px;
+      overflow: hidden;
+      background: radial-gradient(ellipse at center, #1A3D2B 0%, #0D1F17 70%);
+    }
+    #heroCanvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,0.1);
+      border: 0.5px solid rgba(201,168,76,0.4);
+      border-radius: 24px;
+      padding: 6px 18px;
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 1.5px;
+      margin-bottom: 28px;
+      text-transform: uppercase;
+    }
+    .hero-badge-dot { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 600;
+      color: #F0E8D8;
+      line-height: 1.1;
+      max-width: 740px;
+      margin: 0 auto 20px;
+    }
+    .hero h1 em { color: var(--gold); font-style: normal; }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-bottom: 64px; }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--dark);
+      padding: 14px 28px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.2s;
+      letter-spacing: 0.3px;
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      padding: 14px 28px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 0.5px solid var(--gold);
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { background: rgba(201,168,76,0.1); transform: translateY(-2px); }
+    .btn-wa {
+      background: #25D366;
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.2s;
+    }
+    .btn-wa:hover { background: #1dbd5a; transform: translateY(-2px); }
+    .hero-stats { display: flex; gap: 48px; flex-wrap: wrap; justify-content: center; }
+    .hero-stat .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 600;
+      color: var(--gold);
+    }
+    .hero-stat .lbl { font-size: 12px; color: var(--text-muted); letter-spacing: 0.5px; margin-top: 4px; }
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .scroll-hint span { font-size: 10px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+    .scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollDot 2s infinite; }
+
+    /* ======= SECTION WRAPPER ======= */
+    .section { padding: 72px 48px; max-width: 1140px; margin: 0 auto; }
+    .section-label { font-size: 11px; letter-spacing: 2.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 600; color: #F0E8D8; margin-bottom: 12px; }
+    .section-sub { font-size: 15px; color: var(--text-muted); line-height: 1.8; max-width: 560px; margin-bottom: 40px; }
+    .gold-divider { width: 48px; height: 2px; background: linear-gradient(to right, var(--gold), transparent); margin: 14px 0 28px; }
+    .section-wrap { background: rgba(255,255,255,0.015); border-top: 0.5px solid rgba(201,168,76,0.15); }
+
+    /* ======= INSIGHT PILLS ======= */
+    .insight-pills { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+    .pill { font-size: 12px; padding: 5px 14px; border-radius: 20px; font-weight: 500; }
+    .pill-demand { background: rgba(29,158,117,0.12); border: 0.5px solid var(--green-accent); color: var(--green-light); }
+    .pill-gold { background: rgba(201,168,76,0.12); border: 0.5px solid var(--gold); color: var(--gold-light); }
+    .pill-red { background: rgba(226,75,74,0.12); border: 0.5px solid var(--red-alert); color: #F09595; }
+
+    /* ======= PRODUCT TABS ======= */
+    .product-tabs { display: flex; gap: 6px; margin-bottom: 28px; flex-wrap: wrap; }
+    .tab {
+      padding: 9px 22px;
+      border-radius: 4px;
+      font-size: 13px;
+      cursor: pointer;
+      border: 0.5px solid rgba(201,168,76,0.25);
+      color: var(--text-muted);
+      background: transparent;
+      transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .tab.active { background: var(--gold); color: var(--dark); border-color: var(--gold); font-weight: 500; }
+    .tab:hover:not(.active) { border-color: var(--gold); color: var(--gold); }
+
+    /* ======= PRODUCT CARD ======= */
+    .product-card {
+      background: rgba(255,255,255,0.04);
+      border: 0.5px solid rgba(201,168,76,0.2);
+      border-radius: 10px;
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 36px;
+      transition: border-color 0.3s;
+    }
+    .product-card:hover { border-color: rgba(201,168,76,0.4); }
+    .product-visual {
+      background: rgba(201,168,76,0.05);
+      border-radius: 8px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 240px;
+      border: 0.5px solid rgba(201,168,76,0.1);
+    }
+    .product-emoji { font-size: 72px; margin-bottom: 14px; }
+    .product-name-vis { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #F0E8D8; margin-bottom: 12px; }
+    .origin-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+    .origin-tag {
+      font-size: 11px;
+      background: rgba(201,168,76,0.12);
+      border: 0.5px solid rgba(201,168,76,0.35);
+      color: var(--gold-light);
+      padding: 3px 12px;
+      border-radius: 20px;
+    }
+    .product-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 30px; color: #F0E8D8; margin-bottom: 6px; }
+    .grade-badge {
+      display: inline-block;
+      font-size: 11px;
+      background: rgba(29,158,117,0.15);
+      border: 0.5px solid var(--green-accent);
+      color: var(--green-light);
+      padding: 3px 12px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      letter-spacing: 0.3px;
+    }
+    .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 22px; }
+    .spec-item {
+      background: rgba(255,255,255,0.03);
+      border-radius: 6px;
+      padding: 12px 14px;
+      border: 0.5px solid rgba(255,255,255,0.05);
+    }
+    .spec-item .k { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; letter-spacing: 0.3px; }
+    .spec-item .v { font-size: 15px; color: #E8E0D0; font-weight: 500; }
+    .qty-section {
+      background: rgba(0,0,0,0.25);
+      border-radius: 8px;
+      padding: 18px;
+      border: 0.5px solid rgba(201,168,76,0.1);
+    }
+    .qty-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+    .qty-label span:last-child { color: var(--gold); font-weight: 500; font-size: 15px; }
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--gold);
+      height: 4px;
+      cursor: pointer;
+    }
+    .qty-range-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); margin-top: 5px; }
+    .price-display { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; }
+    .price-val { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--gold); }
+    .price-per { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .discount-badge {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    .discount-badge.has-discount { background: rgba(29,158,117,0.15); color: var(--green-light); border: 0.5px solid var(--green-accent); }
+    .discount-badge.no-discount { background: rgba(255,255,255,0.05); color: var(--text-muted); border: 0.5px solid rgba(255,255,255,0.08); }
+
+    /* ======= COMPARISON TABLE ======= */
+    .compare-wrap {
+      margin-top: 36px;
+      background: rgba(255,255,255,0.03);
+      border: 0.5px solid rgba(201,168,76,0.15);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .compare-header { font-size: 12px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; padding: 16px 20px; border-bottom: 0.5px solid rgba(201,168,76,0.1); }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .compare-table th { padding: 12px 16px; text-align: left; font-size: 11px; letter-spacing: 0.5px; color: var(--text-muted); border-bottom: 0.5px solid rgba(201,168,76,0.15); font-weight: 500; }
+    .compare-table td { padding: 12px 16px; border-bottom: 0.5px solid rgba(255,255,255,0.04); color: #E8E0D0; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table .india { color: var(--gold); font-weight: 500; }
+    .star { color: var(--gold); letter-spacing: -2px; }
+
+    /* ======= MARKET INTELLIGENCE ======= */
+    .charts-row { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 20px; }
+    .chart-card {
+      background: rgba(255,255,255,0.03);
+      border: 0.5px solid rgba(201,168,76,0.15);
+      border-radius: 10px;
+      padding: 24px;
+    }
+    .chart-card h4 { font-size: 14px; color: #E8E0D0; margin-bottom: 18px; font-weight: 500; }
+
+    /* ======= SUPPLY CHAIN ======= */
+    .supply-chain-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 36px;
+      background: rgba(255,255,255,0.02);
+      border: 0.5px solid rgba(201,168,76,0.15);
+      border-radius: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .sc-step { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .sc-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.1);
+      border: 0.5px solid rgba(201,168,76,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .sc-icon:hover { background: rgba(201,168,76,0.25); transform: scale(1.12); border-color: var(--gold); }
+    .sc-label { font-size: 11px; color: var(--text-muted); letter-spacing: 0.3px; }
+    .sc-arrow { color: rgba(201,168,76,0.35); font-size: 22px; margin: 0 6px; padding-bottom: 20px; }
+    .sc-detail {
+      display: none;
+      background: rgba(201,168,76,0.07);
+      border: 0.5px solid rgba(201,168,76,0.3);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--text-on-dark);
+      line-height: 1.7;
+    }
+    .sc-detail.visible { display: block; animation: fadeInUp 0.3s ease; }
+    .sc-detail strong { color: var(--gold); }
+
+    /* ======= DELIVERY & DOCS ======= */
+    .info-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+    .info-box {
+      background: rgba(255,255,255,0.03);
+      border: 0.5px solid rgba(201,168,76,0.15);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .info-box .box-title { font-size: 11px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
+    .delivery-row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-bottom: 0.5px solid rgba(255,255,255,0.04); color: #E8E0D0; }
+    .delivery-row:last-child { border-bottom: none; }
+    .delivery-row .dest { color: var(--text-muted); }
+    .delivery-row.highlight { color: var(--gold); }
+    .doc-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #E8E0D0; padding: 6px 0; }
+    .doc-check { color: var(--green-light); font-size: 14px; }
+
+    /* ======= CERTIFICATIONS ======= */
+    .certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 36px; }
+    .cert-card {
+      background: rgba(255,255,255,0.04);
+      border: 0.5px solid rgba(201,168,76,0.2);
+      border-radius: 10px;
+      padding: 24px;
+      text-align: center;
+      transition: all 0.25s;
+    }
+    .cert-card:hover { border-color: rgba(201,168,76,0.5); background: rgba(201,168,76,0.06); }
+    .cert-icon { font-size: 32px; margin-bottom: 10px; }
+    .cert-name { font-size: 15px; font-weight: 500; color: var(--gold); margin-bottom: 6px; }
+    .cert-desc { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+    /* ======= TESTIMONIALS ======= */
+    .testi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .testi {
+      background: rgba(255,255,255,0.04);
+      border: 0.5px solid rgba(201,168,76,0.15);
+      border-radius: 10px;
+      padding: 24px;
+      transition: all 0.25s;
+    }
+    .testi:hover { border-color: rgba(201,168,76,0.35); }
+    .testi-stars { color: var(--gold); font-size: 14px; margin-bottom: 12px; letter-spacing: -1px; }
+    .testi-text { font-size: 14px; color: var(--text-on-dark); line-height: 1.8; margin-bottom: 16px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.15);
+      border: 0.5px solid rgba(201,168,76,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .testi-name { font-size: 13px; font-weight: 500; color: #E8E0D0; }
+    .testi-loc { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+    /* ======= QUOTE GENERATOR ======= */
+    .quote-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .quote-form {
+      background: rgba(255,255,255,0.04);
+      border: 0.5px solid rgba(201,168,76,0.2);
+      border-radius: 10px;
+      padding: 32px;
+    }
+    .quote-form h3 { font-size: 16px; color: #E8E0D0; margin-bottom: 24px; font-weight: 500; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 7px; letter-spacing: 0.3px; }
+    .form-group select,
+    .form-group input[type=text],
+    .form-group input[type=email],
+    .form-group input[type=number] {
+      width: 100%;
+      background: rgba(0,0,0,0.3);
+      border: 0.5px solid rgba(201,168,76,0.25);
+      border-radius: 6px;
+      color: #E8E0D0;
+      padding: 11px 14px;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-group select:focus,
+    .form-group input:focus { border-color: var(--gold); }
+    .form-group select option { background: #1A3D2B; color: #E8E0D0; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .quote-result {
+      background: rgba(201,168,76,0.06);
+      border: 0.5px solid rgba(201,168,76,0.3);
+      border-radius: 10px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .quote-result h3 { font-size: 16px; color: #E8E0D0; margin-bottom: 20px; font-weight: 500; }
+    .quote-line { display: flex; justify-content: space-between; padding: 11px 0; border-bottom: 0.5px solid rgba(201,168,76,0.12); font-size: 14px; }
+    .quote-line:last-of-type { border-bottom: none; }
+    .quote-line .k { color: var(--text-muted); }
+    .quote-line .v { color: #E8E0D0; font-weight: 500; }
+    .quote-total-row { display: flex; justify-content: space-between; align-items: baseline; padding-top: 16px; margin-top: 8px; border-top: 0.5px solid rgba(201,168,76,0.3); }
+    .quote-total-row .k { color: var(--gold); font-size: 14px; font-weight: 500; }
+    .quote-total-row .v { font-family: 'Cormorant Garamond', serif; font-size: 34px; color: var(--gold); }
+    .urgency-badge {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      background: rgba(226,75,74,0.1);
+      border: 0.5px solid rgba(226,75,74,0.4);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #F09595;
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+    .urgency-dot { width: 7px; height: 7px; background: var(--red-alert); border-radius: 50%; animation: pulse 1.5s infinite; flex-shrink: 0; margin-top: 4px; }
+
+    /* ======= LEAD FORM SECTION ======= */
+    .lead-section {
+      background: linear-gradient(135deg, #1A3D2B 0%, #0D1F17 100%);
+      border-top: 0.5px solid rgba(201,168,76,0.25);
+    }
+    .lead-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .lead-copy h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 44px); color: #F0E8D8; margin-bottom: 18px; }
+    .lead-copy p { font-size: 15px; color: var(--text-muted); line-height: 1.8; margin-bottom: 28px; }
+    .lead-points { display: flex; flex-direction: column; gap: 14px; }
+    .lead-point { display: flex; align-items: center; gap: 14px; font-size: 14px; color: #E8E0D0; }
+    .lead-point-icon { color: var(--gold); font-size: 16px; flex-shrink: 0; }
+    .lead-form-card {
+      background: rgba(255,255,255,0.06);
+      border: 0.5px solid rgba(201,168,76,0.25);
+      border-radius: 10px;
+      padding: 32px;
+    }
+    .lead-form-card h3 { font-size: 18px; color: #E8E0D0; margin-bottom: 22px; font-weight: 500; }
+
+    /* ======= BLOG ======= */
+    .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .blog-card {
+      background: rgba(255,255,255,0.03);
+      border: 0.5px solid rgba(201,168,76,0.15);
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .blog-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-3px); }
+    .blog-thumb { height: 110px; display: flex; align-items: center; justify-content: center; font-size: 44px; }
+    .blog-body { padding: 20px; }
+    .blog-tag { font-size: 10px; color: var(--gold); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+    .blog-title { font-size: 15px; color: #E8E0D0; line-height: 1.55; font-weight: 500; margin-bottom: 8px; }
+    .blog-meta { font-size: 11px; color: var(--text-muted); }
+
+    /* ======= CONTACT STRIP ======= */
+    .contact-strip {
+      background: rgba(201,168,76,0.08);
+      border-top: 0.5px solid rgba(201,168,76,0.25);
+      border-bottom: 0.5px solid rgba(201,168,76,0.25);
+      padding: 28px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+    .contact-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #E8E0D0; }
+    .contact-icon { font-size: 18px; }
+    .contact-item .sub { font-size: 12px; color: var(--text-muted); }
+
+    /* ======= FOOTER ======= */
+    footer { background: #060F0A; border-top: 0.5px solid rgba(201,168,76,0.2); padding: 52px 48px 28px; }
+    .footer-inner { display: grid; grid-template-columns: 2.2fr 1fr 1fr 1fr; gap: 36px; max-width: 1140px; margin: 0 auto 36px; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--gold); margin-bottom: 12px; }
+    .footer-brand p { font-size: 13px; color: var(--text-muted); line-height: 1.8; max-width: 280px; }
+    .footer-brand .reg { margin-top: 14px; font-size: 11px; color: rgba(201,168,76,0.6); letter-spacing: 0.5px; }
+    .footer-col h4 { font-size: 11px; letter-spacing: 1.5px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 16px; }
+    .footer-col a { display: block; font-size: 13px; color: #7A6E62; text-decoration: none; margin-bottom: 10px; cursor: pointer; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { max-width: 1140px; margin: 0 auto; padding-top: 20px; border-top: 0.5px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); flex-wrap: wrap; gap: 8px; }
+
+    /* ======= WHATSAPP FAB ======= */
+    .wa-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #25D366;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      cursor: pointer;
+      border: none;
+      z-index: 500;
+      transition: all 0.25s;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+    }
+    .wa-fab:hover { transform: scale(1.12); box-shadow: 0 6px 28px rgba(37,211,102,0.45); }
+
+    /* ======= TOAST ======= */
+    .toast {
+      position: fixed;
+      top: 80px;
+      right: 28px;
+      background: rgba(29,158,117,0.95);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      z-index: 600;
+      transform: translateX(200%);
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .toast.show { transform: translateX(0); }
+
+    /* ======= MOBILE RESPONSIVE ======= */
+    @media (max-width: 900px) {
+      .nav { padding: 14px 24px; }
+      .nav-links, .nav-right { display: none; }
+      .hamburger { display: flex; }
+      .section { padding: 52px 24px; }
+      .product-card { grid-template-columns: 1fr; }
+      .quote-grid { grid-template-columns: 1fr; }
+      .lead-inner { grid-template-columns: 1fr; gap: 32px; }
+      .certs-grid { grid-template-columns: repeat(2, 1fr); }
+      .testi-grid { grid-template-columns: 1fr; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .charts-row { grid-template-columns: 1fr; }
+      .info-two-col { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .hero-stats { gap: 28px; }
+      .contact-strip { padding: 24px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .hero { padding: 60px 20px 80px; }
+      .hero-btns { flex-direction: column; align-items: center; }
+      .hero h1 { font-size: 32px; }
+      .hero-stats { gap: 20px; }
+      .hero-stat .num { font-size: 28px; }
+      .certs-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+
+    /* ======= MOBILE NAV ======= */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(13,31,23,0.98);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 22px; font-family: 'Cormorant Garamond', serif; color: #F0E8D8; text-decoration: none; cursor: pointer; }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--gold); font-size: 28px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
+  <a onclick="navTo('products')">Products</a>
+  <a onclick="navTo('quote')">Get Quote</a>
+  <a onclick="navTo('market')">Market Intel</a>
+  <a onclick="navTo('trust')">About</a>
+  <a onclick="navTo('blog')">Insights</a>
+  <a onclick="navTo('lead')">Contact</a>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+  <a class="nav-logo" href="#">Areca<span>Global</span></a>
+  <div class="nav-links">
+    <a onclick="navTo('products')">Products</a>
+    <a onclick="navTo('quote')">Get Quote</a>
+    <a onclick="navTo('market')">Market Intel</a>
+    <a onclick="navTo('trust')">About</a>
+    <a onclick="navTo('blog')">Insights</a>
+  </div>
+  <div class="nav-right">
+    <button class="nav-wa" onclick="openWhatsApp()">WhatsApp</button>
+    <button class="nav-cta" onclick="navTo('quote')">Request Quote</button>
+  </div>
+  <button class="hamburger" onclick="openMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-badge fade-in">
+      <div class="hero-badge-dot"></div>
+      South India Direct Supplier — Est. 2009
+    </div>
+    <h1 class="fade-in fade-in-delay-1">
+      Premium Indian <em>Areca Nut</em><br>&amp; Spice Exporter
+    </h1>
+    <p class="hero-sub fade-in fade-in-delay-2">
+      Direct from farms in Karnataka &amp; Kerala. Competitive bulk pricing.<br>Direct supply from South India to all major markets across India.
+    </p>
+    <div class="hero-btns fade-in fade-in-delay-3">
+      <button class="btn-gold" onclick="navTo('quote')">Get Latest Price</button>
+      <button class="btn-outline" onclick="navTo('lead')">Request Sample</button>
+      <button class="btn-wa" onclick="openWhatsApp()">💬 Talk on WhatsApp</button>
+    </div>
+    <div class="hero-stats fade-in">
+      <div class="hero-stat"><div class="num">40+</div><div class="lbl">Countries Served</div></div>
+      <div class="hero-stat"><div class="num">5,000+</div><div class="lbl">MT Exported / Year</div></div>
+      <div class="hero-stat"><div class="num">15+</div><div class="lbl">Years Experience</div></div>
+      <div class="hero-stat"><div class="num">98%</div><div class="lbl">On-time Delivery</div></div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Explore</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<div class="section-wrap" id="products">
+<div class="section">
+  <div class="section-label">Our Products</div>
+  <div class="section-title">Farm-Direct Spice Portfolio</div>
+  <div class="gold-divider"></div>
+  <div class="insight-pills">
+    <span class="pill pill-demand">🔥 High demand: Areca Nut — Q1 2026</span>
+    <span class="pill pill-gold">⭐ Best margin: Black Pepper</span>
+    <span class="pill pill-red">⚡ Limited stock: Teja Red Chilli</span>
+  </div>
+  <div class="product-tabs">
+    <button class="tab active" onclick="switchProduct(0)">🌿 Areca Nut</button>
+    <button class="tab" onclick="switchProduct(1)">⚫ Black Pepper</button>
+    <button class="tab" onclick="switchProduct(2)">🟡 Turmeric</button>
+    <button class="tab" onclick="switchProduct(3)">🌶️ Dry Red Chilli</button>
+  </div>
+
+  <div class="product-card">
+    <div class="product-visual">
+      <div class="product-emoji" id="prodEmoji">🌿</div>
+      <div class="product-name-vis" id="prodTitle">Areca Nut</div>
+      <div class="origin-tags" id="prodOrigins">
+        <span class="origin-tag">Karnataka</span>
+        <span class="origin-tag">Kerala</span>
+        <span class="origin-tag">Assam</span>
+      </div>
+    </div>
+    <div class="product-info">
+      <h3 id="pi-title">Areca Nut (Supari)</h3>
+      <div class="grade-badge" id="pi-grade">Grade A — Export Quality</div>
+      <div class="spec-grid">
+        <div class="spec-item"><div class="k">Moisture</div><div class="v" id="pi-moisture">Max 14%</div></div>
+        <div class="spec-item"><div class="k">Size / Grade</div><div class="v" id="pi-size">18–22 mm</div></div>
+        <div class="spec-item"><div class="k">Form</div><div class="v" id="pi-form">Whole / Split</div></div>
+        <div class="spec-item"><div class="k">Purity</div><div class="v" id="pi-purity">99.5%</div></div>
+      </div>
+      <div class="qty-section">
+        <div class="qty-label">
+          <span>Quantity</span>
+          <span id="qtyDisplay">500 kg</span>
+        </div>
+        <input type="range" min="1" max="100" value="5" id="qtySlider" step="1" oninput="updatePrice()">
+        <div class="qty-range-labels"><span>100 kg</span><span>10 MT</span></div>
+        <div class="price-display">
+          <div>
+            <div class="price-val" id="priceVal">₹2,45,000</div>
+            <div class="price-per" id="pricePerKg">@ ₹490/kg • FOB Mangalore</div>
+          </div>
+          <div class="discount-badge no-discount" id="discountBadge">Standard Rate</div>
+        </div>
+      </div>
+      <button class="btn-gold" style="width:100%;margin-top:16px;" onclick="navTo('quote')">
+        Get Exact Quote for This Order →
+      </button>
+    </div>
+  </div>
+
+  <!-- Comparison -->
+  <div class="compare-wrap">
+    <div class="compare-header">COMPETITIVE COMPARISON — <span id="compareProductName">ARECA NUT</span></div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th class="india">🇮🇳 India (Us)</th>
+          <th>🇻🇳 Vietnam</th>
+          <th>🇮🇩 Indonesia</th>
+        </tr>
+      </thead>
+      <tbody id="compareBody"></tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- MARKET INTELLIGENCE -->
+
+
+<!-- SUPPLY CHAIN -->
+<div class="section-wrap" style="border-top: 0.5px solid rgba(201,168,76,0.15);">
+<div class="section">
+  <div class="section-label">Transparency & Trust</div>
+  <div class="section-title">Our Supply Chain</div>
+  <div class="section-sub">Click any stage to learn more about our process.</div>
+  <div class="supply-chain-flow">
+    <div class="sc-step"><div class="sc-icon" onclick="showSCDetail(0)" title="Farm Sourcing">🌾</div><div class="sc-label">Farm Sourcing</div></div>
+    <div class="sc-arrow">›</div>
+    <div class="sc-step"><div class="sc-icon" onclick="showSCDetail(1)" title="Processing">⚙️</div><div class="sc-label">Processing</div></div>
+    <div class="sc-arrow">›</div>
+    <div class="sc-step"><div class="sc-icon" onclick="showSCDetail(2)" title="QC & Sorting">🔬</div><div class="sc-label">QC & Sorting</div></div>
+    <div class="sc-arrow">›</div>
+    <div class="sc-step"><div class="sc-icon" onclick="showSCDetail(3)" title="Packaging">📦</div><div class="sc-label">Packaging</div></div>
+    <div class="sc-arrow">›</div>
+    <div class="sc-step"><div class="sc-icon" onclick="showSCDetail(4)" title="Export">🚢</div><div class="sc-label">Export</div></div>
+    <div class="sc-arrow">›</div>
+    <div class="sc-step"><div class="sc-icon" onclick="showSCDetail(5)" title="Delivery">🌍</div><div class="sc-label">Delivery</div></div>
+  </div>
+  <div class="sc-detail" id="scDetail"></div>
+  <div class="info-two-col">
+    <div class="info-box">
+      <div class="box-title">Delivery Timeline by Region</div>
+      <div class="delivery-row"><span class="dest">Karnataka → Maharashtra</span><span>2–3 days (Road)</span></div>
+<div class="delivery-row"><span class="dest">South → North India</span><span>4–6 days</span></div>
+<div class="delivery-row"><span class="dest">South → East India</span><span>3–5 days</span></div>
+<div class="delivery-row"><span class="dest">Bulk Orders (Full Truck)</span><span>2–5 days</span></div>
+<div class="delivery-row highlight"><span>Urgent Dispatch</span><span>24–48 hrs 🚚</span></div>
+    </div>
+    <div class="info-box">
+      <div class="box-title">Export Documentation Provided</div>
+      <div class="doc-item"><span class="doc-check">✓</span> Phytosanitary Certificate</div>
+      <div class="doc-item"><span class="doc-check">✓</span> Certificate of Origin (COO)</div>
+      <div class="doc-item"><span class="doc-check">✓</span> FSSAI Lab Test Report</div>
+      <div class="doc-item"><span class="doc-check">✓</span> Bill of Lading / Airway Bill</div>
+      <div class="doc-item"><span class="doc-check">✓</span> Commercial Invoice & Packing List</div>
+      <div class="doc-item"><span class="doc-check">✓</span> APEDA Registration Certificate</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- QUOTE GENERATOR -->
+<div id="quote" style="border-top: 0.5px solid rgba(201,168,76,0.15);">
+<div class="section">
+  <div class="section-label">Smart Quote Generator</div>
+  <div class="section-title">Get Instant Export Quote</div>
+  <div class="section-sub">Real-time pricing based on quantity, destination, and shipping mode. No hidden fees.</div>
+  <div class="quote-grid">
+    <div class="quote-form">
+      <h3>Configure Your Order</h3>
+      <div class="form-group">
+        <label>Select Product</label>
+        <select id="q-product" onchange="calcQuote()">
+          <option value="areca">Areca Nut (Supari)</option>
+          <option value="pepper">Black Pepper</option>
+          <option value="turmeric">Turmeric</option>
+          <option value="chilli">Dry Red Chilli</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Quantity (kg)</label>
+        <input type="number" id="q-qty" value="500" min="100" max="100000" oninput="calcQuote()" placeholder="e.g. 2000">
+      </div>
+      <div class="form-group">
+        <label>Destination Country</label>
+        <select id="q-country" onchange="calcQuote()">
+          <option value="uae">United Arab Emirates</option>
+          <option value="bangladesh">Bangladesh</option>
+          <option value="nepal">Nepal</option>
+          <option value="uk">United Kingdom</option>
+          <option value="usa">United States</option>
+          <option value="germany">Germany</option>
+          <option value="malaysia">Malaysia</option>
+          <option value="africa">Nigeria / Africa</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Shipping Mode</label>
+        <select id="q-ship" onchange="calcQuote()">
+          <option value="sea">🚢 Sea Freight (Economical)</option>
+          <option value="air">✈️ Air Freight (Express)</option>
+        </select>
+      </div>
+      <button class="btn-gold" style="width:100%;margin-top:8px;padding:14px;" onclick="submitQuote()">
+        Request Formal Quotation →
+      </button>
+      <p style="text-align:center;margin-top:10px;font-size:11px;color:var(--text-muted);">
+        Response within 2 business hours
+      </p>
+    </div>
+    <div class="quote-result">
+      <div>
+        <h3>Quote Breakdown</h3>
+        <div class="quote-line"><span class="k">Product Cost</span><span class="v" id="qr-product">₹2,45,000</span></div>
+        <div class="quote-line"><span class="k">Freight & Insurance</span><span class="v" id="qr-ship">₹18,000</span></div>
+        <div class="quote-line"><span class="k">Export Docs & Handling</span><span class="v" id="qr-docs">₹5,500</span></div>
+        <div class="quote-line"><span class="k">Packaging (25 kg bags)</span><span class="v" id="qr-pack">₹1,300</span></div>
+        <div class="quote-total-row">
+          <span class="k">Total Estimate (CIF)</span>
+          <span class="v" id="qr-total">₹2,69,800</span>
+        </div>
+      </div>
+      <div>
+        <div style="margin-top:20px;border-top:0.5px solid rgba(201,168,76,0.2);padding-top:16px;">
+          <div class="quote-line"><span class="k">Delivery Timeline</span><span class="v" id="qr-time">12–15 days</span></div>
+          <div class="quote-line"><span class="k">Port of Loading</span><span class="v">Mangalore / Cochin</span></div>
+          <div class="quote-line"><span class="k">Payment Terms</span><span class="v">30% advance, 70% on BL</span></div>
+          <div class="quote-line"><span class="k">Price Validity</span><span class="v">30 days from quote</span></div>
+        </div>
+        <div class="urgency-badge">
+          <div class="urgency-dot"></div>
+          <span id="qr-urgency">UAE demand is high — rates may increase next week. Book now to lock price.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- TRUST & CERTIFICATIONS -->
+<div id="trust" class="section-wrap" style="border-top: 0.5px solid rgba(201,168,76,0.15);">
+<div class="section">
+  <div class="section-label">Certifications & Credibility</div>
+  <div class="section-title">Why Buyers Choose Us</div>
+  <div class="gold-divider"></div>
+  <div class="certs-grid">
+    <div class="cert-card"><div class="cert-icon">🏛️</div><div class="cert-name">FSSAI Certified</div><div class="cert-desc">Food safety standards compliant. License No. 11224567890145</div></div>
+    <div class="cert-card"><div class="cert-icon">📋</div><div class="cert-name">APEDA Registered</div><div class="cert-desc">Agricultural & Processed Food Exports Development Authority</div></div>
+    <div class="cert-card"><div class="cert-icon">🌐</div><div class="cert-name">IEC Licensed</div><div class="cert-desc">Import Export Code — Ministry of Commerce & Industry, India</div></div>
+    <div class="cert-card"><div class="cert-icon">🌿</div><div class="cert-name">Organic Certified</div><div class="cert-desc">Select batches certified organic for EU & US market entry</div></div>
+    <div class="cert-card"><div class="cert-icon">✅</div><div class="cert-name">ISO 22000</div><div class="cert-desc">Food safety management system — internationally compliant</div></div>
+    <div class="cert-card"><div class="cert-icon">🔬</div><div class="cert-name">NABL Lab Tested</div><div class="cert-desc">Every batch tested at accredited laboratories before dispatch</div></div>
+  </div>
+  <div style="margin-top:8px;">
+    <div style="font-size:12px;color:var(--text-muted);letter-spacing:1px;margin-bottom:18px;">WHAT OUR BUYERS SAY</div>
+    <div class="testi-grid">
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"ArecaGlobal has been our preferred areca nut supplier for 3 years. Consistent quality, fair pricing, and they always deliver on time. Highly recommended for any importer."</div>
+        <div class="testi-author"><div class="testi-avatar">AK</div><div><div class="testi-name">Ahmed Al-Khalid</div><div class="testi-loc">Delhi, India — Wholesale Importer</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"We switched from Vietnam sourcing to ArecaGlobal two years ago. Better quality, 8% lower landed cost, and the documentation support is excellent."</div>
+        <div class="testi-author"><div class="testi-avatar">MR</div><div><div class="testi-name">Md. Rafiqul Islam</div><div class="testi-loc">Maharastra, India — Food Processing Co.</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"The sample we requested arrived in 4 days. Quality exceeded expectations. We placed a 20 MT order immediately and it went smoothly from start to finish."</div>
+        <div class="testi-author"><div class="testi-avatar">SW</div><div><div class="testi-name">Samuel Wanjiru</div><div class="testi-loc">Jammu, India — Regional Distributor</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Their black pepper is the finest we've sourced from India. Moisture control and grade consistency meet our strict EU food manufacturing standards every single time."</div>
+        <div class="testi-author"><div class="testi-avatar">HM</div><div><div class="testi-name">Hans Mueller</div><div class="testi-loc">Gujrat, India — Food Manufacturer</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- LEAD CAPTURE -->
+<div id="lead" class="lead-section">
+<div class="section">
+  <div class="lead-inner">
+    <div class="lead-copy">
+      <div class="section-label">Start Your Partnership</div>
+      <h2>Ready to Source Direct from India?</h2>
+      <div class="gold-divider"></div>
+      <p>Join 200+ global importers, wholesalers, and food processing companies who trust ArecaGlobal for consistent, quality spice sourcing.</p>
+      <div class="lead-points">
+        <div class="lead-point"><span class="lead-point-icon">✦</span> Free samples for verified importers</div>
+        <div class="lead-point"><span class="lead-point-icon">✦</span> Custom packaging & private labeling available</div>
+        <div class="lead-point"><span class="lead-point-icon">✦</span> Dedicated export manager assigned to your account</div>
+        <div class="lead-point"><span class="lead-point-icon">✦</span> Price locked for 30 days post-quotation</div>
+        <div class="lead-point"><span class="lead-point-icon">✦</span> All INCO terms supported (FOB, CIF, CFR, DDP)</div>
+      </div>
+    </div>
+    <div class="lead-form-card">
+      <h3>Get a Quote / Bulk Inquiry</h3>
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" id="lf-name" placeholder="John"></div>
+        <div class="form-group"><label>Company</label><input type="text" id="lf-company" placeholder="Import Co. Ltd."></div>
+      </div>
+      <div class="form-group"><label>Email Address</label><input type="email" id="lf-email" placeholder="john@company.com"></div>
+      <div class="form-group"><label>Country</label>
+        <select id="lf-country">
+          <option>United Arab Emirates</option><option>Bangladesh</option><option>United Kingdom</option>
+          <option>United States</option><option>Germany</option><option>Kenya</option><option>Malaysia</option><option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Product Interest</label>
+        <select id="lf-product">
+          <option>Areca Nut (Supari)</option><option>Black Pepper</option><option>Turmeric</option>
+          <option>Dry Red Chilli</option><option>Mixed
+            
+            
+            
+            Spices Portfolio</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Estimated Monthly Quantity</label>
+        <select id="lf-qty">
+          <option>100–500 kg</option><option>500 kg – 2 MT</option><option>2–10 MT</option><option>10+ MT</option>
+        </select>
+      </div>
+      <button class="btn-gold" style="width:100%;padding:14px;" onclick="submitLead()">
+        Submit Inquiry →
+      </button>
+      <p style="text-align:center;margin-top:12px;font-size:12px;color:var(--text-muted);">
+        Or WhatsApp us directly: <strong style="color:var(--gold);">+91 7999846983</strong>
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- BLOG -->
+<div id="blog" style="border-top: 0.5px solid rgba(201,168,76,0.15);">
+<div class="section">
+  <div class="section-label">Export Intelligence</div>
+  <div class="section-title">Market Insights & News</div>
+  <div class="gold-divider"></div>
+  <div class="blog-grid">
+    <div class="blog-card" onclick="showBlogToast()">
+      <div class="blog-thumb" style="background:rgba(201,168,76,0.06);">🌿</div>
+      <div class="blog-body">
+        <div class="blog-tag">Areca Nut</div>
+        <div class="blog-title">Areca Nut Demand Surge in North India & Bangladesh — Q1 2026 Report</div>
+        <div class="blog-meta">Mar 2026 · 6 min read</div>
+      </div>
+    </div>
+    <div class="blog-card" onclick="showBlogToast()">
+      <div class="blog-thumb" style="background:rgba(29,158,117,0.06);">🌍</div>
+      <div class="blog-body">
+        <div class="blog-tag">Export Trends</div>
+        <div class="blog-title">Best Countries to Export Indian Spices in 2026 — A Data-Driven Guide</div>
+        <div class="blog-meta">Feb 2026 · 8 min read</div>
+      </div>
+    </div>
+    <div class="blog-card" onclick="showBlogToast()">
+      <div class="blog-thumb" style="background:rgba(201,168,76,0.06);">📊</div>
+      <div class="blog-body">
+        <div class="blog-tag">Profit Margins</div>
+        <div class="blog-title">Real Profit Margins in Spice Export: What Importers Are Making in 2026</div>
+        <div class="blog-meta">Jan 2026 · 5 min read</div>
+      </div>
+    </div>
+    <div class="blog-card" onclick="showBlogToast()">
+      <div class="blog-thumb" style="background:rgba(226,75,74,0.06);">🌶️</div>
+      <div class="blog-body">
+        <div class="blog-tag">Market Analysis</div>
+        <div class="blog-title">Indian vs Vietnam Spices: Quality, Price & Supply Chain Comparison 2026</div>
+        <div class="blog-meta">Jan 2026 · 7 min read</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CONTACT STRIP -->
+<div style="border-top: 0.5px solid rgba(201,168,76,0.2); background: rgba(201,168,76,0.04);">
+  <div class="contact-strip">
+    <div class="contact-item">
+      <span class="contact-icon">📍</span>
+      <div><div>Mangalore, Karnataka, India</div><div class="sub">Main Office & Warehouse</div></div>
+    </div>
+    <div class="contact-item">
+      <span class="contact-icon">📧</span>
+      <div><div>exports@arecaglobal.com</div><div class="sub">Reply within 2 hours</div></div>
+    </div>
+    <div class="contact-item">
+      <span class="contact-icon">📞</span>
+      <div><div>+91 7999846983</div><div class="sub">Mon–Sat, 9am–6pm IST</div></div>
+    </div>
+    <button class="btn-wa" onclick="openWhatsApp()" style="padding:12px 22px;font-size:13px;">
+      💬 WhatsApp Now
+    </button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">ArecaGlobal</div>
+      <p>Premium Indian spice exporter since 2009. Sourcing directly from 500+ farm partners in Karnataka & Kerala. Trusted by importers across 40+ countries.</p>
+      <div class="reg">IEC: XXXXXXXXXX | APEDA Reg: XXXXXXXXX | FSSAI: 11224567890145</div>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a onclick="switchProduct(0);navTo('products')">Areca Nut</a>
+      <a onclick="switchProduct(1);navTo('products')">Black Pepper</a>
+      <a onclick="switchProduct(2);navTo('products')">Turmeric</a>
+      <a onclick="switchProduct(3);navTo('products')">Dry Red Chilli</a>
+      <a>Mixed Spices</a>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a>Custom Packaging</a>
+      <a>Private Labeling</a>
+      <a>Bulk Orders</a>
+      <a onclick="navTo('lead')">Sample Requests</a>
+      <a>Distributor Program</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a onclick="navTo('trust')">About Us</a>
+      <a onclick="navTo('trust')">Certifications</a>
+      <a onclick="navTo('blog')">Market Insights</a>
+      <a onclick="navTo('lead')">Contact</a>
+      <a>Become a Partner</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 ArecaGlobal Exports Pvt. Ltd. All rights reserved.</span>
+    <span>Mangalore, Karnataka — India's #1 Areca Nut Exporter</span>
+  </div>
+</footer>
+
+<!-- WHATSAPP FAB -->
+<button class="wa-fab" onclick="openWhatsApp()" title="Chat on WhatsApp">💬</button>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ============ JAVASCRIPT ============ -->
+<script>
+/* ===== DATA ===== */
+const products = [
+  {
+    emoji: '🌿', title: 'Areca Nut', longTitle: 'Areca Nut (Supari)',
+    origins: ['Karnataka','Kerala','Assam'],
+    grade: 'Grade A — Export Quality',
+    moisture: 'Max 14%', size: '18–22 mm', form: 'Whole / Split', purity: '99.5%',
+    basePrice: 490,
+    compareLabel: 'ARECA NUT',
+    compare: [
+      ['$980 / MT','$1,050 / MT','$1,020 / MT'],
+      ['★★★★★','★★★★','★★★'],
+      ['Max 14%','16%','15%'],
+      ['12–15 days','18–22 days','20–25 days'],
+      ['FSSAI, APEDA, IEC','Limited','Limited'],
+      ['100 kg','1 MT','5 MT']
+    ]
+  },
+  {
+    emoji: '⚫', title: 'Black Pepper', longTitle: 'Black Pepper (Kali Mirch)',
+    origins: ['Kerala','Karnataka'],
+    grade: 'Grade MG1 — Export Standard',
+    moisture: 'Max 13%', size: '4.5 mm+', form: 'Whole / Ground', purity: '99.0%',
+    basePrice: 820,
+    compareLabel: 'BLACK PEPPER',
+    compare: [
+      ['$2,100 / MT','$1,980 / MT','$2,050 / MT'],
+      ['★★★★★','★★★★','★★★★'],
+      ['Max 13%','14%','13.5%'],
+      ['12–15 days','18–22 days','20–25 days'],
+      ['FSSAI, APEDA, IEC','Halal Cert.','Limited'],
+      ['100 kg','500 kg','1 MT']
+    ]
+  },
+  {
+    emoji: '🟡', title: 'Turmeric', longTitle: 'Turmeric (Haldi)',
+    origins: ['Tamil Nadu','Andhra Pradesh','Karnataka'],
+    grade: 'Alleppey Finger — Export Grade',
+    moisture: 'Max 12%', size: 'Finger / Bulb', form: 'Whole / Powder', purity: '4%+ Curcumin',
+    basePrice: 180,
+    compareLabel: 'TURMERIC',
+    compare: [
+      ['$450 / MT','$410 / MT','$380 / MT'],
+      ['★★★★★','★★★','★★★'],
+      ['Max 12%','14%','13%'],
+      ['12–15 days','18–22 days','22–28 days'],
+      ['FSSAI, APEDA, IEC','Limited','None'],
+      ['100 kg','1 MT','1 MT']
+    ]
+  },
+  {
+    emoji: '🌶️', title: 'Dry Red Chilli', longTitle: 'Dry Red Chilli (Lal Mirch)',
+    origins: ['Andhra Pradesh','Karnataka','Rajasthan'],
+    grade: 'Teja S17 — Export Grade',
+    moisture: 'Max 12%', size: '8–12 cm', form: 'Whole / De-seeded', purity: '99.0%',
+    basePrice: 260,
+    compareLabel: 'RED CHILLI',
+    compare: [
+      ['$680 / MT','$650 / MT','$620 / MT'],
+      ['★★★★★','★★★','★★★'],
+      ['Max 12%','13%','14%'],
+      ['12–15 days','18–22 days','22–28 days'],
+      ['FSSAI, APEDA, IEC','Limited','None'],
+      ['100 kg','500 kg','500 kg']
+    ]
+  }
+];
+
+const compareRows = ['Price (per MT)','Quality Grade','Moisture Control','Delivery (to UAE)','Certifications','Min. Order Qty'];
+
+const shippingData = {
+  uae:        { sea: 18000, air: 85000,  days: '12–15 days', urgency: 'UAE demand is very high — pricing may increase next week. Lock your rate now.' },
+  bangladesh: { sea: 8000,  air: 55000,  days: '7–10 days',  urgency: 'Bangladesh import season active — limited vessel slots available.' },
+  nepal:      { sea: 6000,  air: 45000,  days: '5–8 days',   urgency: 'Nepal demand strong — book early for preferred rate.' },
+  uk:         { sea: 45000, air: 180000, days: '22–28 days', urgency: 'UK import duty rebate season — ideal time to order now.' },
+  usa:        { sea: 55000, air: 220000, days: '28–35 days', urgency: 'US demand high — ship before Q2 premium pricing kicks in.' },
+  germany:    { sea: 48000, air: 195000, days: '24–30 days', urgency: 'Germany food expo season — stock up now for best positioning.' },
+  malaysia:   { sea: 22000, air: 90000,  days: '14–18 days', urgency: 'Malaysia Ramadan demand active — book within 48 hours.' },
+  africa:     { sea: 38000, air: 150000, days: '18–22 days', urgency: 'East Africa market opening — early orders get pioneer pricing.' }
+};
+
+const prodBasePrice = { areca: 490, pepper: 820, turmeric: 180, chilli: 260 };
+
+const scDetails = [
+  '<strong>Farm Sourcing:</strong> Direct partnerships with 500+ farmer families across Karnataka & Kerala. Harvest-to-warehouse in under 48 hours. We pay farmers 15% above market rate ensuring premium quality incentive.',
+  '<strong>Processing:</strong> Modern processing units in Mangalore & Cochin. Sun-dried + mechanical drying. Automated shelling and cleaning. Processing capacity: 800 MT/month.',
+  '<strong>QC & Sorting:</strong> NABL-accredited lab testing for every batch. Tests include: Ochratoxin A, Aflatoxins, pesticide residue, moisture content. Optical sorting for size grading. 100% rejection of substandard lots.',
+  '<strong>Packaging:</strong> Export-grade 25 kg PP woven bags with HDPE inner liner. Custom branding & private labeling available. Vacuum packaging on request for premium shipments. Palletized for ease of unloading.',
+  '<strong>Export:</strong> Weekly sailings from Mangalore & Cochin ports to Gulf, Europe, and Africa. All INCO terms supported: FOB, CIF, CFR, DDP. Container booking, stuffing, and pre-shipment inspection managed in-house.',
+  '<strong>Delivery:</strong> Door-to-port delivery at destination. Full container tracking provided. 3PL partnerships in UAE, UK, Bangladesh & Kenya. Post-delivery quality assurance follow-up on every shipment.'
+];
+
+/* ===== PRODUCT SWITCHER ===== */
+let currentProduct = 0;
+
+function switchProduct(i) {
+  currentProduct = i;
+  const p = products[i];
+  document.querySelectorAll('.tab').forEach((t, j) => t.classList.toggle('active', j === i));
+  document.getElementById('prodEmoji').textContent = p.emoji;
+  document.getElementById('prodTitle').textContent = p.title;
+  document.getElementById('pi-title').textContent = p.longTitle;
+  document.getElementById('pi-grade').textContent = p.grade;
+  document.getElementById('pi-moisture').textContent = p.moisture;
+  document.getElementById('pi-size').textContent = p.size;
+  document.getElementById('pi-form').textContent = p.form;
+  document.getElementById('pi-purity').textContent = p.purity;
+  document.getElementById('compareProductName').textContent = p.compareLabel;
+  const orig = document.getElementById('prodOrigins');
+  orig.innerHTML = p.origins.map(n => `<span class="origin-tag">${n}</span>`).join('');
+  const tbody = document.getElementById('compareBody');
+  tbody.innerHTML = compareRows.map((row, ri) => {
+    const isRating = ri === 1;
+    const indiaVal = isRating ? `<span class="star">${p.compare[ri][0]}</span>` : p.compare[ri][0];
+    const vnVal   = isRating ? `<span class="star">${p.compare[ri][1]}</span>` : p.compare[ri][1];
+    const idVal   = isRating ? `<span class="star">${p.compare[ri][2]}</span>` : p.compare[ri][2];
+    return `<tr><td>${row}</td><td class="india">${indiaVal}</td><td>${vnVal}</td><td>${idVal}</td></tr>`;
+  }).join('');
+  document.getElementById('qtySlider').value = 5;
+  updatePrice();
+}
+
+function updatePrice() {
+  const p = products[currentProduct];
+  const sliderVal = parseInt(document.getElementById('qtySlider').value);
+  const qty = sliderVal * 100;
+  document.getElementById('qtyDisplay').textContent = qty >= 1000 ? (qty / 1000).toFixed(1) + ' MT' : qty + ' kg';
+  let discPct = 0, label = 'Standard Rate', hasDisc = false;
+  if (qty >= 5000) { discPct = 0.10; label = '10% Bulk Discount'; hasDisc = true; }
+  else if (qty >= 2000) { discPct = 0.07; label = '7% Volume Discount'; hasDisc = true; }
+  else if (qty >= 1000) { discPct = 0.05; label = '5% Volume Discount'; hasDisc = true; }
+  const rate = Math.round(p.basePrice * (1 - discPct));
+  const total = rate * qty;
+  document.getElementById('priceVal').textContent = '₹' + total.toLocaleString('en-IN');
+  document.getElementById('pricePerKg').textContent = '@ ₹' + rate + '/kg • FOB Mangalore';
+  const badge = document.getElementById('discountBadge');
+  badge.textContent = label;
+  badge.className = 'discount-badge ' + (hasDisc ? 'has-discount' : 'no-discount');
+}
+
+/* ===== QUOTE CALCULATOR ===== */
+function calcQuote() {
+  const prod    = document.getElementById('q-product').value;
+  const qtyKg   = Math.max(100, parseInt(document.getElementById('q-qty').value) || 500);
+  const country = document.getElementById('q-country').value;
+  const mode    = document.getElementById('q-ship').value;
+  const s       = shippingData[country];
+  const baseR   = prodBasePrice[prod];
+  let discPct   = 0;
+  if (qtyKg >= 5000) discPct = 0.10;
+  else if (qtyKg >= 2000) discPct = 0.07;
+  else if (qtyKg >= 1000) discPct = 0.05;
+  const rate        = Math.round(baseR * (1 - discPct));
+  const productCost = rate * qtyKg;
+  const freightCost = mode === 'sea' ? s.sea : s.air;
+  const docs        = 5500;
+  const bags        = Math.ceil(qtyKg / 25);
+  const packaging   = bags * 65;
+  const total       = productCost + freightCost + docs + packaging;
+  const timeline    = mode === 'air' ? '2–4 days (Air)' : s.days + ' (Sea)';
+  document.getElementById('qr-product').textContent = '₹' + productCost.toLocaleString('en-IN');
+  document.getElementById('qr-ship').textContent    = '₹' + freightCost.toLocaleString('en-IN') + (mode === 'air' ? ' (Air)' : ' (Sea)');
+  document.getElementById('qr-docs').textContent    = '₹' + docs.toLocaleString('en-IN');
+  document.getElementById('qr-pack').textContent    = '₹' + packaging.toLocaleString('en-IN') + ' (' + bags + ' bags)';
+  document.getElementById('qr-total').textContent   = '₹' + total.toLocaleString('en-IN');
+  document.getElementById('qr-time').textContent    = timeline;
+  document.getElementById('qr-urgency').textContent = s.urgency;
+}
+
+/* ===== SUPPLY CHAIN ===== */
+let lastSC = -1;
+function showSCDetail(i) {
+  const el = document.getElementById('scDetail');
+  if (lastSC === i) { el.classList.remove('visible'); lastSC = -1; return; }
+  el.innerHTML = scDetails[i];
+  el.classList.add('visible');
+  lastSC = i;
+}
+
+/* ===== NAVIGATION ===== */
+function navTo(id) {
+  closeMobileMenu();
+  const el = document.getElementById(id);
+  if (el) { setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50); }
+}
+function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); }
+function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+/* ===== WHATSAPP ===== */
+function openWhatsApp() {
+  const phone = '917999846983'; // your number (no +, no space)
+  const msg = encodeURIComponent('Hello ArecaGlobal! I am interested in importing spices from India. Please share your latest price list.');
+  
+  const url = `https://wa.me/${phone}?text=${msg}`;
+  window.open(url, '_blank');
+}
+
+/* ===== TOAST ===== */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+function submitQuote()  { showToast('✓ Quotation request sent! We\'ll respond within 2 hours.'); }
+function submitLead()   { showToast('✓ Inquiry received! Our export manager will contact you shortly.'); }
+function showBlogToast(){ showToast('📖 Full article coming soon — subscribe to get notified.'); }
+
+/* ===== HERO CANVAS ===== */
+(function() {
+  const canvas = document.getElementById('heroCanvas');
+  const ctx = canvas.getContext('2d');
+  let w, h, nodes, raf;
+  function resize() {
+    w = canvas.width = canvas.offsetWidth;
+    h = canvas.height = canvas.offsetHeight;
+    nodes = Array.from({ length: 20 }, () => ({
+      x: Math.random() * w, y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.45,
+      vy: (Math.random() - 0.5) * 0.45
+    }));
+  }
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    nodes.forEach(n => {
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0 || n.x > w) n.vx *= -1;
+      if (n.y < 0 || n.y > h) n.vy *= -1;
+    });
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 210) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(201,168,76,${0.13 * (1 - d / 210)})`;
+          ctx.lineWidth = 0.6;
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    nodes.forEach(n => {
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, 1.8, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(201,168,76,0.45)';
+      ctx.fill();
+    });
+    raf = requestAnimationFrame(draw);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  draw();
+})();
+
+/* ===== CHARTS ===== */
+Chart.defaults.color = '#9B8E7E';
+Chart.defaults.borderColor = 'rgba(201,168,76,0.08)';
+
+// Price trend chart
+new Chart(document.getElementById('priceChart'), {
+  type: 'line',
+  data: {
+    labels: ['Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar'],
+    datasets: [{
+      label: 'Areca Nut (INR/quintal)',
+      data: [38000,39200,40100,41500,43000,42800,44200,46000,48500,49200,50100,51800],
+      borderColor: '#C9A84C',
+      backgroundColor: 'rgba(201,168,76,0.07)',
+      fill: true, tension: 0.4, pointRadius: 3, borderWidth: 1.5, pointBackgroundColor: '#C9A84C'
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { ticks: { callback: v => '₹' + Math.round(v / 1000) + 'k', font: { size: 11 } }, grid: { color: 'rgba(201,168,76,0.06)' } },
+      x: { ticks: { font: { size: 11 } }, grid: { color: 'rgba(201,168,76,0.06)' } }
+    }
+  }
+});
+
+// Demand donut chart
+new Chart(document.getElementById('demandChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['UAE/Gulf','Bangladesh','Nepal','Africa','Europe','Others'],
+    datasets: [{
+      data: [34,22,15,12,10,7],
+      backgroundColor: ['#C9A84C','#1D9E75','#5DCAA5','#E8C97A','#2A5C40','#4A4035'],
+      borderWidth: 0
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: true, position: 'bottom', labels: { font: { size: 11 }, padding: 10, boxWidth: 12 } } },
+    cutout: '60%'
+  }
+});
+
+// Volume bar chart
+new Chart(document.getElementById('volChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Oct','Nov','Dec','Jan','Feb','Mar'],
+    datasets: [
+      { label: 'Areca Nut (MT)', data: [280,320,450,510,490,580], backgroundColor: '#C9A84C', borderRadius: 3 },
+      { label: 'Spices (MT)',    data: [120,140,160,180,190,220], backgroundColor: '#1D9E75', borderRadius: 3 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: true, labels: { font: { size: 11 }, padding: 12, boxWidth: 12 } } },
+    scales: {
+      x: { ticks: { font: { size: 11 } }, grid: { display: false } },
+      y: { ticks: { font: { size: 11 }, callback: v => v + ' MT' }, grid: { color: 'rgba(201,168,76,0.06)' } }
+    }
+  }
+});
+
+/* ===== INIT ===== */
+switchProduct(0);
+calcQuote();
+</script>
+</body>
+</html>
